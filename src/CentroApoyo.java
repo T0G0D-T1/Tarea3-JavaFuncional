@@ -3,6 +3,7 @@ import java.util.List;
 import java.util.function.BiPredicate;
 import java.util.function.Predicate;
 import java.util.function.UnaryOperator;
+import java.util.function.BinaryOperator;
 import java.util.Scanner;
 
 public class CentroApoyo {
@@ -83,35 +84,40 @@ public class CentroApoyo {
         .filter(e->e.nombre().equalsIgnoreCase(nombre))
         .findFirst()
         .ifPresentOrElse(e->System.out.println("Estudiante: " + e.nombre()
-        + ", Curso: " + e.curso()
-        + ", Nota: " + e.nota()
-        + ", Estado: " + (this.aprobado.test(e) ? "Aprobado" : "Reprobado")), 
-        ()->System.out.println("Estudiante no encontrado: " + nombre));
+        + "\n Curso: " + e.curso()
+        + "\n Nota: " + e.nota()
+        + "\n Estado: " + (this.aprobado.test(e) ? "Aprobado" : "Reprobado" + "\n")),
+        ()->System.out.println("Estudiante no encontrado: " + nombre + "\n"));
     }
 
-    public void Calculadora(){
+    public void calculadora(){
         Scanner sc = new Scanner(System.in);
 
         System.out.print("Ingrese el primer numero: ");
         double num1 = sc.nextDouble();
 
         System.out.print("Ingrese el segundo numero: ");
-        double num2 = sc.nextDouble();
+        double num2 = sc.nextDouble();2
 
-        System.out.print("Ingrese la operación (+, -, *, /): ");
+        System.out.print("Ingrese la operación (+, -, *, /): \n");
         String operacion = sc.next();
 
-        UnaryOperator<Double> suma = x -> x + num2;
-        UnaryOperator<Double> resta = x -> x - num2;
-        UnaryOperator<Double> multiplicacion = x -> x * num2;
-        UnaryOperator<Double> division = x -> x / num2;
-
+        BinaryOperator<Double> suma = (x, y) -> x + y;
+        BinaryOperator<Double> resta = (x, y) -> x - y;
+        BinaryOperator<Double> multiplicacion = (x, y) -> x * y;
+        BinaryOperator<Double> division = (x, y) -> x / y;
         double resultado;
+
         switch (operacion) {
-            case "+" -> resultado = suma.apply(num1);
-            case "-" -> resultado = resta.apply(num1);
-            case "*" -> resultado = multiplicacion.apply(num1);
-            case "/" -> resultado = division.apply(num1);
+            case "+" -> resultado = suma.apply(num1, num2);
+            case "-" -> resultado = resta.apply(num1, num2);
+            case "*" -> resultado = multiplicacion.apply(num1, num2);
+            case "/" -> {
+                if (num2 == 0) {
+                    System.out.println("Error: División por cero no permitida.");
+                    return;
+                }
+                resultado = division.apply(num1, num2);}
             default -> {
                 System.out.println("Operación no válida");
                 return;
@@ -122,9 +128,25 @@ public class CentroApoyo {
     public static void main(String[] args) {
 
         CentroApoyo centro = new CentroApoyo();
+        Scanner sc = new Scanner(System.in);
+        int opcion;
 
-        System.out.println(centro.perteneceACurso("Ana", "PTEC102"));
-        System.out.println(centro.perteneceACurso("Luis", "MAT100"));
+        do {
+        System.out.println("===== CENTRO DE APOYO =====");
+        System.out.println("1. Mostrar estado de estudiante");
+        System.out.println("2. Calculadora");
+        System.out.println("0. Salir");
+        System.out.print("Seleccione una opción: ");
 
+        opcion = sc.nextInt();
+        sc.nextLine();
+    
+        switch (opcion) {
+            case 1 -> centro.mostrarEstadoEstudiante();
+            case 2 -> centro.calculadora();
+            case 0 -> System.out.println("Saliendo...");
+            default -> System.out.println("Opción no válida");
+        }
+        } while (opcion != 0);
     }
 }
