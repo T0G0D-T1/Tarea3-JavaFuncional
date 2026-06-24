@@ -1,8 +1,8 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.BiPredicate;
+//import java.util.function.BiPredicate; NO SE USO
 import java.util.function.Predicate;
-import java.util.function.UnaryOperator;
+//import java.util.function.UnaryOperator; NO SE USO
 import java.util.function.BinaryOperator;
 import java.util.Scanner;
 
@@ -97,7 +97,7 @@ public class CentroApoyo {
         double num1 = sc.nextDouble();
 
         System.out.print("Ingrese el segundo numero: ");
-        double num2 = sc.nextDouble();2
+        double num2 = sc.nextDouble();
 
         System.out.print("Ingrese la operación (+, -, *, /): \n");
         String operacion = sc.next();
@@ -125,13 +125,12 @@ public class CentroApoyo {
         }
         System.out.println("Resultado: " + resultado);
     }
-    public static void main(String[] args) {
 
-        CentroApoyo centro = new CentroApoyo();
-        Scanner sc = new Scanner(System.in);
-        int opcion;
+    public void menu() {
+    Scanner sc = new Scanner(System.in);
+    int opcion;
 
-        do {
+    do {
         System.out.println("===== CENTRO DE APOYO =====");
         System.out.println("1. Mostrar estado de estudiante");
         System.out.println("2. Calculadora");
@@ -140,13 +139,21 @@ public class CentroApoyo {
 
         opcion = sc.nextInt();
         sc.nextLine();
-    
+
         switch (opcion) {
-            case 1 -> centro.mostrarEstadoEstudiante();
-            case 2 -> centro.calculadora();
+            case 1 -> mostrarEstadoEstudiante();
+            case 2 -> calculadora();
             case 0 -> System.out.println("Saliendo...");
             default -> System.out.println("Opción no válida");
         }
-        } while (opcion != 0);
+
+    } while (opcion != 0);
+
     }
-}
+
+    public static void main(String[] args) {
+
+        CentroApoyo centro = new CentroApoyo();
+        centro.menu();
+        }
+    }
