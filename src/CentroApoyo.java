@@ -1,11 +1,11 @@
+/* Maximiliano Parra - Tarea 3 - Opcion B */
 import java.util.ArrayList;
 import java.util.List;
-//import java.util.function.BiPredicate; NO SE USO
 import java.util.function.Predicate;
-//import java.util.function.UnaryOperator; NO SE USO
 import java.util.function.BinaryOperator;
 import java.util.Scanner;
 
+// Clase CentroApoyo que contiene una lista de estudiantes con sus respectivos cursos y notas, ademas de metodos para verificar si un estudiante esta aprobado o reprobado, mostrar su estado y realizar operaciones matematicas basicas.
 public class CentroApoyo {
 
     public record Estudiante(String nombre, String curso, double nota) {
@@ -13,8 +13,8 @@ public class CentroApoyo {
 
     //Aca se crea una lista de estudiantes con sus respectivos cursos y notas, ademas se definen dos predicados para verificar si un estudiante esta aprobado o reprobado segun su nota.
     private List<Estudiante> estudiantes;
-    private Predicate<Estudiante>           aprobado  = e -> e.nota() >= 4.0;
-    private Predicate<Estudiante>           reprobado = e -> e.nota() < 4.0;
+    private Predicate<Estudiante> aprobado  = e -> e.nota() >= 4.0;
+    private Predicate<Estudiante> reprobado = e -> e.nota() < 4.0;
 
     public CentroApoyo() {
         estudiantes = new ArrayList<>();
@@ -75,6 +75,7 @@ public class CentroApoyo {
         return reprobado;
     }
 
+    //hace uso de stream para mostrar el estado de un estudiante con el nombre dado, ignora mayusculas y retorna un mensaje con su estado.
     public void mostrarEstadoEstudiante() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Ingrese el nombre del estudiante: ");
@@ -89,7 +90,8 @@ public class CentroApoyo {
         + "\n Estado: " + (this.aprobado.test(e) ? "Aprobado" : "Reprobado" + "\n")),
         ()->System.out.println("Estudiante no encontrado: " + nombre + "\n"));
     }
-
+ 
+    //hace uso de BinaryOperator para realizar operaciones matematicas basicas entre dos numeros, ademas de manejar excepciones como division por cero y operacion no valida.
     public void calculadora(){
         Scanner sc = new Scanner(System.in);
 
@@ -102,12 +104,14 @@ public class CentroApoyo {
         System.out.print("Ingrese la operación (+, -, *, /): \n");
         String operacion = sc.next();
 
+        // Definición de operaciones usando BinaryOperator
         BinaryOperator<Double> suma = (x, y) -> x + y;
         BinaryOperator<Double> resta = (x, y) -> x - y;
         BinaryOperator<Double> multiplicacion = (x, y) -> x * y;
         BinaryOperator<Double> division = (x, y) -> x / y;
         double resultado;
 
+        // Manejo de operaciones y excepciones
         switch (operacion) {
             case "+" -> resultado = suma.apply(num1, num2);
             case "-" -> resultado = resta.apply(num1, num2);
@@ -126,6 +130,7 @@ public class CentroApoyo {
         System.out.println("Resultado: " + resultado);
     }
 
+    //hace uso de un menu para mostrar las opciones disponibles al usuario, ademas de manejar la entrada del usuario y llamar a los metodos correspondientes segun la opcion seleccionada.
     public void menu() {
     Scanner sc = new Scanner(System.in);
     int opcion;
@@ -151,6 +156,7 @@ public class CentroApoyo {
 
     }
 
+    //hace uso del metodo main para crear una instancia de la clase CentroApoyo y llamar al metodo menu para iniciar la aplicacion.
     public static void main(String[] args) {
 
         CentroApoyo centro = new CentroApoyo();
