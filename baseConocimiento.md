@@ -1,30 +1,59 @@
 Ana - PTEC102 - 6.1
+
 Luis - PTEC102 - 3.9
+
 Maria - CINF101 - 5.5
+
 Pedro - MAT100 - 4.8
+
 Camila - PTEC102 - 6.7
+
 Joaquin - CINF101 - 2.9
+
 Fernanda - MAT100 - 5.0
+
 Diego - PTEC102 - 4.3
+
 Valentina - CINF101 - 6.4
+
 Sebastian - MAT100 - 3.1
+
 Francisca - PTEC102 - 5.8
+
 Tomas - CINF101 - 4.2
+
 Daniela - MAT100 - 6.0
+
 Benjamin - PTEC102 - 2.5
+
 Antonia - CINF101 - 5.1
+
 Vicente - MAT100 - 4.9
+
 Catalina - PTEC102 - 6.9
+
 Gabriel - CINF101 - 3.8
+
 Martina - MAT100 - 5.7
+
 Agustin - PTEC102 - 4.1
+
 Isidora - CINF101 - 6.3
+
 Maximiliano - MAT100 - 2.7
+
 Renata - PTEC102 - 5.4
+
 Cristobal - CINF101 - 4.6
+
 Emilia - MAT100 - 6.5
+
 Matias - PTEC102 - 3.4
+
 Amanda - CINF101 - 5.9
+
 Ignacio - MAT100 - 4.4
+
 Josefa - PTEC102 - 6.2
+
 Felipe - CINF101 - 3.3
